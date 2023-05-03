@@ -1,36 +1,37 @@
 #include <stdio.h>
 
-/**/
+float sum_digitos (int num)
+{
+
+    float sum;
+    int digit;
+
+    while (num > 0) { 
+        digit = num % 10; 
+
+        sum += digit;
+
+        num /= 10;
+    }
+    return sum;
+}
+
 int main ()
 {
-    int num_entrada;
+    int num;
     int vflag  = 1;
-    int digit[50];
+    float sum_inicial, sum_Final;
 
     /*Ingreso de datos*/
-    scanf("%d", &num_entrada);
-    
-    do
-    {
-        for (int i = 0; i < 50; i++)
-        {
-            digit[i]= num_entrada % 10; 
-            num_entrada /= 10; 
-            
-            printf("%d", digit[i]);
+    scanf("%d", &num);
 
-            if(num_entrada >= 0)
-            {
-                vflag = 0;
-                break;
-            }
-        }
-        
-    }
-    while (vflag != 0);
+    sum_inicial = sum_digitos(num);
 
-	
-    printf("%d", num_entrada);
+    printf("%f", sum_inicial);
+
+    sum_Final = sum_digitos(sum_inicial);
+
+    printf("%f", sum_Final);
 
     return 0;
 }
